@@ -3,116 +3,376 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Miva Tours — Abidjan, Côte d'Ivoire</title>
+<title>Miva Tours — Agence de voyage à Abidjan, Côte d'Ivoire</title>
+<meta name="description" content="Miva Tours — billetterie, hôtellerie, tourisme, MICE, assurances voyage et transfert d'argent à Abidjan, Cocody. Réservez en ligne, ouvert 24h/24, 7j/7. Venez, le monde vous attend.">
+<link rel="icon" type="image/png" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--gold:#c5a065;--ink:#0f0f11;--cream:#f6f3ee;--grey:#8a857c;--line:#e5e0d8}
+:root{--teal:#2e7fa3;--teal-dark:#1d5670;--navy:#253746;--orange:#f5822a;--orange-soft:#f9a35c;--cream:#faf8f4;--sand:#f2ede4;--grey:#7d8894;--line:#e3ddd0}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Outfit',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.65}
-h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;letter-spacing:-0.01em}
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem;background:linear-gradient(160deg,#1a1814 0%,#2a2520 70%,#3d332a 100%);color:#fff;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80') center/cover;opacity:0.18;mix-blend-mode:overlay}
-.hero-content{position:relative;z-index:1;max-width:900px}
-.hero h1 img{max-height:150px;display:block;margin:0 auto 1.2rem}
-.hero .tag{font-family:'Cormorant Garamond';font-style:italic;color:var(--gold);font-size:1.35rem;margin-bottom:2rem;display:block}
-.hero .cta{display:inline-block;padding:1rem 3rem;border:1px solid rgba(255,255,255,0.25);color:#fff;text-decoration:none;letter-spacing:0.15em;text-transform:uppercase;font-size:.8rem;transition:all .3s} .hero .cta:hover{background:#fff;color:var(--ink);border-color:#fff}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--cream);color:var(--navy);line-height:1.65;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;letter-spacing:-.01em}
+::selection{background:var(--orange);color:#fff}
+/* ---- Animations ---- */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes floatPlane{0%{transform:translate(-10vw,10vh) rotate(8deg);opacity:0}10%{opacity:.55}90%{opacity:.55}100%{transform:translate(110vw,-6vh) rotate(8deg);opacity:0}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,130,42,.45)}50%{box-shadow:0 0 0 14px rgba(245,130,42,0)}}
+@keyframes shine{0%{transform:translateX(-120%)}60%,100%{transform:translateX(220%)}}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.3,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal.d1{transition-delay:.12s}.reveal.d2{transition-delay:.24s}.reveal.d3{transition-delay:.36s}
+/* ---- Navigation ---- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;color:#fff;transition:background .35s,box-shadow .35s,padding .35s}
+nav.scrolled{background:rgba(29,63,82,.97);box-shadow:0 2px 20px rgba(0,0,0,.25);padding:.7rem 2.5rem}
+nav .brand{display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.3rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:inherit}
+nav .brand img{height:44px;width:auto;vertical-align:middle}
+nav ul{display:flex;gap:1.8rem;list-style:none;align-items:center}
+nav a.nav-link{color:inherit;text-decoration:none;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;opacity:.88;position:relative;transition:color .25s}
+nav a.nav-link::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:2px;background:var(--orange);transition:width .3s}
+nav a.nav-link:hover{color:var(--orange)}
+nav a.nav-link:hover::after{width:100%}
+nav .nav-cta{background:var(--orange);color:#fff;padding:.55rem 1.4rem;border-radius:999px;text-decoration:none;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;transition:transform .25s,box-shadow .25s}
+nav .nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(245,130,42,.45)}
+/* ---- Hero ---- */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:7rem 2rem 5rem;background:linear-gradient(165deg,#1d3f52 0%,#2e7fa3 55%,#3d97b8 100%);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80') center/cover;opacity:.16;mix-blend-mode:overlay}
+.hero .plane{position:absolute;top:22%;left:0;font-size:2rem;opacity:0;animation:floatPlane 14s linear 2s infinite;z-index:1}
+.hero-content{position:relative;z-index:2;max-width:900px}
+.hero img.logo{max-height:190px;filter:drop-shadow(0 8px 24px rgba(0,0,0,.35));animation:fadeUp 1s ease .1s both}
+.hero .tag{font-family:'Cormorant Garamond',serif;font-style:italic;color:#fff;font-size:1.4rem;margin:1.4rem 0 2.2rem;animation:fadeUp 1s ease .45s both}
+.hero .tag em{color:var(--orange-soft);font-style:italic}
+.cta{display:inline-block;padding:1rem 3rem;border:1px solid rgba(255,255,255,.4);color:#fff;text-decoration:none;letter-spacing:.15em;text-transform:uppercase;font-size:.8rem;position:relative;overflow:hidden;transition:all .3s;animation:fadeUp 1s ease .7s both}
+.cta:hover{background:#fff;color:var(--teal-dark);border-color:#fff;transform:translateY(-2px)}
+.cta.gold{background:var(--orange);border-color:var(--orange);margin-left:1rem;animation-delay:.85s}
+.cta.gold:hover{background:#e06f1c;border-color:#e06f1c;color:#fff;box-shadow:0 10px 30px rgba(245,130,42,.4)}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;color:#fff;opacity:.7;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;animation:fadeIn 1.2s ease 1.4s both}
+.hero-scroll::after{content:'';display:block;width:1px;height:38px;background:linear-gradient(#fff,transparent);margin:.5rem auto 0}
+<style>
+/* ---- Sections ---- */
 section{padding:6rem 2rem;max-width:1100px;margin:0 auto}
-.destinations h2{font-size:2.6rem;margin-bottom:.3rem;color:var(--ink)}
-destinations .meta{font-family:'Cormorant Garamond';font-style:italic;color:var(--grey);font-size:1.15rem;margin-bottom:3rem}
+.section-title{font-size:2.7rem;margin-bottom:.3rem;color:var(--teal-dark)}
+.section-title span{color:var(--orange)}
+.meta{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--grey);font-size:1.15rem;margin-bottom:3rem;display:block}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
-.card{border-top:1px solid var(--line);padding-top:1.5rem;transition:transform .2s}
-.card:hover{transform:translateY(-4px)}
-.card img{width:100%;height:250px;object-fit:cover;filter:grayscale(15%) contrast(1.05);margin-bottom:1rem;border-radius:2px}
-.card h3{font-family:'Cormorant Garamond';font-size:1.6rem;margin-bottom:.4rem}
+.card{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.3,1),box-shadow .35s}
+.card:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(29,86,112,.14)}
+.card img{width:100%;height:250px;object-fit:cover;transition:transform .6s ease,filter .6s}
+.card:hover img{transform:scale(1.06)}
+.card-body{padding:1.4rem 1.5rem 1.6rem}
+.card h3{font-family:'Cormorant Garamond',serif;font-size:1.65rem;margin-bottom:.4rem;color:var(--teal-dark)}
 .card p{color:var(--grey);font-size:.92rem}
-.about{background:var(--ink);color:#fff;padding:5rem 2rem}
+.card .prix{display:inline-block;margin-top:.7rem;color:var(--orange);font-weight:600;font-size:.95rem;letter-spacing:.04em}
+/* ---- À propos ---- */
+.about{background:linear-gradient(150deg,var(--teal-dark),var(--navy));color:#fff;max-width:none;padding:5.5rem 2rem;position:relative;overflow:hidden}
+.about::after{content:'✈';position:absolute;right:-1rem;bottom:-2rem;font-size:14rem;opacity:.06;transform:rotate(-12deg)}
 .about-inner{max-width:900px;margin:0 auto}
-.about h2{font-size:2.2rem;margin-bottom:1rem;color:#fff}
-.about p{color:#ccc;font-size:1.05rem;line-height:1.8}
-.services{background:var(--cream)}
+.about h2{font-size:2.3rem;margin-bottom:1rem;color:#fff}
+.about h2 span{color:var(--orange-soft)}
+.about p{color:#d5e4ec;font-size:1.05rem;line-height:1.85}
+.about .chiffres{display:flex;gap:3rem;margin-top:2.5rem;flex-wrap:wrap}
+.about .chiffre b{display:block;font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--orange-soft);font-weight:500}
+.about .chiffre span{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:#9db9c8}
+/* ---- Services ---- */
+.services{background:var(--sand);max-width:none;padding:5.5rem 2rem}
 .services-inner{max-width:1100px;margin:0 auto}
-.services h2{font-size:2.2rem;margin-bottom:2rem}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem}
-.service-block{border-left:3px solid var(--gold);padding-left:1.2rem}
-.service-block h4{font-family:'Cormorant Garamond';font-size:1.2rem;margin-bottom:.5rem;color:var(--ink)}
-.service-block p{color:var(--grey);font-size:.92rem}
-.contact-form{max-width:600px;margin:3rem auto 0;background:#fff;padding:2rem;border:1px solid var(--line);border-radius:4px}
-.contact-form input, .contact-form textarea{width:100%;padding:.8rem;border:1px solid var(--line);font-family:inherit;margin-bottom:1rem;background:var(--cream);font-size:.95rem}
-.contact-form button{background:var(--ink);color:#fff;padding:.8rem 2rem;border:none;font-family:inherit;text-transform:uppercase;letter-spacing:.1em;font-size:.8rem;cursor:pointer;transition:background .2s} .contact-form button:hover{background:var(--gold)}
-.contact-section{text-align:center;background:var(--cream);border-top:1px solid var(--line)}
-.contact-section h2{font-size:2.4rem;margin-bottom:1rem}
-.contact-section p{color:var(--grey);margin-bottom:.5rem}
-.contact-section a{color:var(--ink);font-weight:500;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px} .contact-section a:hover{color:var(--gold)}
-footer{text-align:center;padding:2.5rem 2rem;font-size:.75rem;color:#aaa;background:#0a0a0a}
+.services h2{font-size:2.3rem;margin-bottom:2.4rem;color:var(--teal-dark)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
+.service-block{background:#fff;border-radius:8px;padding:1.6rem 1.4rem;border-top:3px solid var(--teal);transition:transform .3s,box-shadow .3s,border-color .3s}
+.service-block:hover{transform:translateY(-5px);border-top-color:var(--orange);box-shadow:0 14px 30px rgba(29,86,112,.12)}
+.service-block h4{font-family:'Cormorant Garamond',serif;font-size:1.25rem;margin-bottom:.45rem;color:var(--teal-dark)}
+.service-block p{color:var(--grey);font-size:.9rem}
+/* ---- Formulaire (réservation + contact) ---- */
+.form-card{max-width:680px;margin:3rem auto 0;background:#fff;padding:2.4rem;border:1px solid var(--line);border-radius:10px;text-align:left;box-shadow:0 12px 34px rgba(29,86,112,.08)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 1.2rem}
+.form-grid .full{grid-column:1/-1}
+.contact-form label{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:.35rem}
+.contact-form input,.contact-form select,.contact-form textarea{width:100%;padding:.75rem .9rem;border:1px solid var(--line);border-radius:6px;font-family:inherit;margin-bottom:1.1rem;background:var(--cream);font-size:.95rem;color:var(--navy);transition:border-color .25s,box-shadow .25s}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(46,127,163,.15)}
+.contact-form button{background:var(--teal);color:#fff;padding:.9rem 2.4rem;border:none;border-radius:999px;font-family:inherit;text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;cursor:pointer;position:relative;overflow:hidden;transition:background .25s,transform .25s,box-shadow .25s}
+.contact-form button:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:0 8px 22px rgba(46,127,163,.35)}
+.contact-form button::after{content:'';position:absolute;top:0;left:0;width:40%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.35),transparent);animation:shine 3.2s ease infinite}
+.contact-form button:disabled{opacity:.6;cursor:wait;transform:none}
+.form-status{margin-top:1rem;font-size:.92rem;min-height:1.4em}
+.form-status.ok{color:#1e8e3e}
+.form-status.ko{color:#d84a38}
+.form-status .ref{display:inline-block;background:rgba(46,127,163,.1);color:var(--teal-dark);font-weight:600;padding:.15rem .6rem;border-radius:4px}
+/* ---- Contact ---- */
+.contact-section{text-align:center;border-top:1px solid var(--line)}
+.contact-section h2{font-size:2.3rem;margin-bottom:.5rem;color:var(--teal-dark)}
+.contact-section a{color:var(--teal);font-weight:500;text-decoration:none;border-bottom:1px solid var(--orange);padding-bottom:2px;transition:color .25s}
+.contact-section a:hover{color:var(--orange)}
+/* ---- WhatsApp ---- */
+.whatsapp{position:fixed;bottom:1.5rem;right:1.5rem;z-index:100;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.25);transition:transform .2s;animation:pulse 2.6s ease infinite}
+.whatsapp:hover{transform:scale(1.1)}
+.whatsapp svg{width:30px;height:30px;fill:#fff}
+/* ---- Footer ---- */
+footer{text-align:center;padding:2.6rem 2rem;font-size:.78rem;color:#8ba7b5;background:var(--navy)}
+footer b{color:#fff;font-family:'Cormorant Garamond',serif;letter-spacing:.1em}
+footer em{color:var(--orange-soft)}
+/* ---- Responsive ---- */
+@media(max-width:720px){
+nav{padding:.8rem 1.1rem}
+nav ul{gap:.9rem}
+nav a.nav-link{font-size:.62rem}
+nav .brand img{height:36px}
+nav .nav-cta{display:none}
+section{padding:4rem 1.2rem}
+.cta.gold{margin-left:0;margin-top:1rem}
+.form-grid{grid-template-columns:1fr}
+.about .chiffres{gap:1.6rem}
+}
 </style>
 </head>
 <body>
+<nav id="nav">
+<a href="#" class="brand"><img src="logo.png" alt="Miva Tours">Miva</a>
+<ul>
+<li><a class="nav-link" href="#destinations">Destinations</a></li>
+<li><a class="nav-link" href="#services">Services</a></li>
+<li><a class="nav-link" href="#about">À propos</a></li>
+<li><a class="nav-link" href="#contact">Contact</a></li>
+<li><a class="nav-cta" href="#reserver">Réserver</a></li>
+</ul>
+</nav>
+
 <header class="hero">
+<div class="plane">✈️</div>
 <div class="hero-content">
-<h1><img src="logo.jpg" alt="Miva Tours"></h1>
-<span class="tag">Inspiré de Discovery Services — Abidjan, Cocody · 24h/24, 7j/7</span>
-<a href="#contact" class="cta">Demander un voyage</a>
+<img class="logo" src="logo.png" alt="Miva Tours — Venez, le monde vous attend">
+<p class="tag">Venez, <em>le monde vous attend</em> — Abidjan, Cocody · 24h/24, 7j/7</p>
+<div>
+<a href="#reserver" class="cta">Réserver mon voyage</a>
+<a href="https://wa.me/2250708104040" target="_blank" rel="noopener" class="cta gold">WhatsApp</a>
 </div>
+</div>
+<a href="#destinations" class="hero-scroll">Découvrir</a>
 </header>
 
 <section class="destinations" id="destinations">
-<h2>Destinations</h2>
-<span class="meta">Casablanca · Paris · Bali · Johannesburg · Zanzibar · Seychelles · Dubaï</span>
-<div class="grid">
-<article class="card">
-<img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&q=80" alt="Montagne">
-<h3>Voyages de rêve</h3>
-<p>Circuits sur mesure dans les 5 continents.</p>
-</article>
-<article class="card">
-<img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80" alt="Temple">
-<h3>Tourisme religieux</h3>
-<p>Pèlerinages et circuits de foi : Rome, Israël, Turquie, Mecque, Jordanie.</p>
-</article>
-<article class="card">
-<img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80" alt="Mer">
-<h3>Tourisme médical</h3>
-<p>Partenariat Conseil Turc : suivi visa, hôtel, billets, soins et transfert aérien.</p>
-</article>
+<h2 class="section-title reveal">Nos <span>destinations</span></h2>
+<span class="meta reveal d1">Au départ d'Abidjan — tarifs par personne</span>
+<div class="grid" id="destinations-grid">
+<article class="card"><div class="card-body"><p>Chargement des destinations…</p></div></article>
 </div>
 </section>
 
 <section class="about" id="about">
 <div class="about-inner">
-<h2>À propos</h2>
-<p>Miva Tours (inspiré de Discovery Services — Abidjan, Cocody) : billetterie compétitive, 600 000+ chambres partenaires dans le monde, location de voitures, MICE, assurances voyage, assistance aéroportuaire (Meet & Assist VIP), livraison bagages et transfert d'argent sécurisé. Votre rêve devient possible.</p>
+<h2 class="reveal">À propos de <span>Miva Tours</span></h2>
+<p class="reveal d1">Billetterie compétitive, 600 000+ chambres partenaires dans le monde, location de voitures, MICE, assurances voyage, assistance aéroportuaire (Meet &amp; Assist VIP), livraison bagages et transfert d'argent sécurisé. Votre rêve devient possible.</p>
+<div class="chiffres reveal d2">
+<div class="chiffre"><b>600 000+</b><span>Chambres partenaires</span></div>
+<div class="chiffre"><b>7+</b><span>Destinations phares</span></div>
+<div class="chiffre"><b>24h/24</b><span>Disponibilité</span></div>
+<div class="chiffre"><b>8</b><span>Services inclus</span></div>
+</div>
 </div>
 </section>
 
 <section class="services" id="services">
 <div class="services-inner">
-<h2>Nos Services</h2>
+<h2 class="reveal">Nos <span>services</span></h2>
 <div class="services-grid">
-<div class="service-block"><h4>Billeterie</h4><p>Toutes destinations, tarifs très compétitifs.</p></div>
-<div class="service-block"><h4>Hôtellerie</h4><p>600 000+ chambres dans le monde.</p></div>
-<div class="service-block"><h4>Tourisme</h4><p>Loisir, religieux et médical (Dubaï, circuits sur mesure).</p></div>
-<div class="service-block"><h4>MICE</h4><p>Réunions, incentives, conférences, expositions.</p></div>
-<div class="service-block"><h4>Location voitures</h4><p>Berling, 4×4, bus partout dans le monde et à Abidjan.</p></div>
-<div class="service-block"><h4>Assurances</h4><p>Garanties voyage complètes.</p></div>
-<div class="service-block"><h4>Assistance aéroport</h4><p>Meet & Assist VIP, livraison bagages.</p></div>
-<div class="service-block"><h4>Transfert d'argent</h4><p>Exchange sécurisé.</p></div>
+<div class="service-block reveal"><h4>Billeterie</h4><p>Toutes destinations, tarifs très compétitifs.</p></div>
+<div class="service-block reveal d1"><h4>Hôtellerie</h4><p>600 000+ chambres dans le monde.</p></div>
+<div class="service-block reveal d2"><h4>Tourisme</h4><p>Loisir, religieux et médical (Dubaï, circuits sur mesure).</p></div>
+<div class="service-block reveal d3"><h4>MICE</h4><p>Réunions, incentives, conférences, expositions.</p></div>
+<div class="service-block reveal"><h4>Location voitures</h4><p>Berlines, 4×4, bus partout dans le monde et à Abidjan.</p></div>
+<div class="service-block reveal d1"><h4>Assurances</h4><p>Garanties voyage complètes.</p></div>
+<div class="service-block reveal d2"><h4>Assistance aéroport</h4><p>Meet &amp; Assist VIP, livraison bagages.</p></div>
+<div class="service-block reveal d2"><h4>Transfert d'argent</h4><p>Exchange sécurisé.</p></div>
 </div>
 </div>
 </section>
-
-<section class="contact-section" id="contact">
-<h2>Contact</h2>
-<p>Abidjan, Cocody — Ouvert 24h/24, 7j/7</p>
-<p><a href="mailto:contact@mivatours.ci">contact@mivatours.ci</a> · <a href="tel:+2250708104040">+225 07 08 10 40 40</a></p>
-<form class="contact-form" onsubmit="event.preventDefault(); this.innerHTML='<p>Message envoyé. Un conseiller vous répond sous 24h.</p>';">
-<input type="text" placeholder="Nom" required>
-<input type="email" placeholder="Email" required>
-<textarea rows="3" placeholder="Votre demande de voyage" required></textarea>
-<button type="submit">Envoyer</button>
+<section class="reserver" id="reserver">
+<h2 class="section-title reveal">Réservez votre <span>voyage</span></h2>
+<span class="meta reveal d1">Remplissez le formulaire — un conseiller vous rappelle sous 24h</span>
+<form class="contact-form form-card reveal" id="reserveForm">
+<div class="form-grid">
+<div class="full">
+<label for="rDestination">Destination</label>
+<select id="rDestination" name="destination" required>
+<option value="">Choisissez votre destination…</option>
+</select>
+</div>
+<div>
+<label for="rDepart">Départ</label>
+<input type="date" id="rDepart" name="depart" required>
+</div>
+<div>
+<label for="rRetour">Retour (optionnel)</label>
+<input type="date" id="rRetour" name="retour">
+</div>
+<div>
+<label for="rVoyageurs">Voyageurs</label>
+<input type="number" id="rVoyageurs" name="voyageurs" min="1" max="30" value="1" required>
+</div>
+<div>
+<label for="rTelephone">Téléphone (optionnel)</label>
+<input type="tel" id="rTelephone" name="telephone" placeholder="+225 …">
+</div>
+<div class="full">
+<label for="rNom">Nom complet</label>
+<input type="text" id="rNom" name="nom" placeholder="Votre nom" required>
+</div>
+<div class="full">
+<label for="rEmail">Email</label>
+<input type="email" id="rEmail" name="email" placeholder="vous@exemple.com" required>
+</div>
+<div class="full">
+<label for="rMessage">Précisions (optionnel)</label>
+<textarea id="rMessage" name="message" rows="3" placeholder="Budget, préférences, demandes spéciales…"></textarea>
+</div>
+</div>
+<button type="submit" id="reserveBtn">Confirmer ma réservation</button>
+<p class="form-status" id="reserveStatus"></p>
 </form>
 </section>
 
-<footer>Miva Tours — Abidjan, Côte d'Ivoire · Inspiré de Discovery Services © 2026</footer>
+<section class="contact-section" id="contact">
+<h2 class="reveal">Contact</h2>
+<p class="reveal d1">Abidjan, Cocody — Ouvert 24h/24, 7j/7</p>
+<p class="reveal d2"><a href="mailto:contact@mivatours.ci">contact@mivatours.ci</a> · <a href="tel:+2250708104040">+225 07 08 10 40 40</a></p>
+<form class="contact-form form-card reveal d2" id="contactForm" style="max-width:600px">
+<div class="full"><label for="cNom">Nom</label><input type="text" id="cNom" placeholder="Votre nom" required></div>
+<div class="full"><label for="cEmail">Email</label><input type="email" id="cEmail" placeholder="vous@exemple.com" required></div>
+<div class="full"><label for="cMessage">Votre message</label><textarea id="cMessage" rows="3" placeholder="Votre demande" required></textarea></div>
+<button type="submit" id="contactBtn">Envoyer</button>
+<p class="form-status" id="contactStatus"></p>
+</form>
+</section>
+
+<a class="whatsapp" href="https://wa.me/2250708104040" target="_blank" rel="noopener" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
+</a>
+
+<footer>
+<b>MIVA TOURS</b> — Abidjan, Côte d'Ivoire · <em>Venez, le monde vous attend.</em><br>
+© <span id="year"></span> · Billeterie · Hôtellerie · Tourisme · MICE · Transfert d'argent
+</footer>
+<script>
+const FALLBACK = [
+  {nom:"Casablanca",prix:"599 000 FCFA",description:"La perle du Maroc.",image:"https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=80"},
+  {nom:"Paris",prix:"À partir de 450 000 FCFA",description:"La ville lumière.",image:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80"},
+  {nom:"Bali",prix:"850 000 FCFA",description:"Plages paradisiaques.",image:"https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80"},
+  {nom:"Johannesburg",prix:"720 000 FCFA",description:"Safari et culture.",image:"https://images.unsplash.com/photo-1568067894394-ef388958a1e2?w=800&q=80"},
+  {nom:"Zanzibar",prix:"599 000 FCFA",description:"L'île aux épices.",image:"https://images.unsplash.com/photo-1505881502353-a1986add3762?w=800&q=80"},
+  {nom:"Seychelles",prix:"Sur demande",description:"L'archipel de rêve.",image:"https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80"},
+  {nom:"Dubaï",prix:"Sur demande",description:"Luxe et tourisme médical.",image:"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80"}
+];
+
+function renderDestinations(list){
+  document.getElementById('destinations-grid').innerHTML = list.map((d, i) => `
+    <article class="card reveal d${i % 3}" style="transition-delay:${(i % 3) * 0.12}s">
+      <img src="${d.image}" alt="${d.nom}" loading="lazy">
+      <div class="card-body">
+        <h3>${d.nom}</h3>
+        <p>${d.description || ''}</p>
+        <span class="prix">${d.prix || 'Sur demande'}</span>
+      </div>
+    </article>`).join('');
+  observeReveals();
+  const sel = document.getElementById('rDestination');
+  sel.innerHTML = '<option value="">Choisissez votre destination…</option>' +
+    list.map(d => `<option value="${d.nom}">${d.nom} — ${d.prix || 'Sur demande'}</option>`).join('');
+}
+
+fetch('/destinations')
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(list => renderDestinations(list))
+  .catch(() => renderDestinations(FALLBACK));
+
+/* Animations d'apparition au scroll */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, {threshold: 0.12});
+function observeReveals(){ document.querySelectorAll('.reveal:not(.visible)').forEach(el => io.observe(el)); }
+observeReveals();
+
+/* Navigation : fond au scroll */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Date minimum = aujourd'hui pour la réservation */
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('rDepart').min = today;
+document.getElementById('rRetour').min = today;
+
+function postJSON(url, body){
+  return fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)})
+    .then(async res => ({ok: res.ok, data: await res.json()}));
+}
+
+/* Réservation */
+document.getElementById('reserveForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const status = document.getElementById('reserveStatus');
+  const btn = document.getElementById('reserveBtn');
+  btn.disabled = true;
+  status.className = 'form-status';
+  status.textContent = 'Envoi de votre réservation…';
+  try {
+    const {ok, data} = await postJSON('/reservation', {
+      destination: document.getElementById('rDestination').value,
+      depart: document.getElementById('rDepart').value,
+      retour: document.getElementById('rRetour').value,
+      voyageurs: document.getElementById('rVoyageurs').value,
+      telephone: document.getElementById('rTelephone').value,
+      nom: document.getElementById('rNom').value,
+      email: document.getElementById('rEmail').value,
+      message: document.getElementById('rMessage').value
+    });
+    if (ok) {
+      status.className = 'form-status ok';
+      status.innerHTML = `✅ ${data.message.replace(data.reference, `<span class="ref">${data.reference}</span>`)}`;
+      e.target.reset();
+    } else {
+      status.className = 'form-status ko';
+      status.textContent = '⚠️ ' + (data.erreurs || ["Erreur lors de l'envoi."]).join(' ');
+    }
+  } catch (err) {
+    status.className = 'form-status ko';
+    status.textContent = "Impossible de contacter le serveur. Appelez le +225 07 08 10 40 40.";
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+/* Contact */
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const status = document.getElementById('contactStatus');
+  const btn = document.getElementById('contactBtn');
+  btn.disabled = true;
+  status.className = 'form-status';
+  status.textContent = 'Envoi en cours…';
+  try {
+    const {ok, data} = await postJSON('/contact', {
+      nom: document.getElementById('cNom').value,
+      email: document.getElementById('cEmail').value,
+      message: document.getElementById('cMessage').value
+    });
+    if (ok) {
+      status.className = 'form-status ok';
+      status.textContent = '✅ ' + data.message;
+      e.target.reset();
+    } else {
+      status.className = 'form-status ko';
+      status.textContent = '⚠️ ' + (data.erreurs || ["Erreur lors de l'envoi."]).join(' ');
+    }
+  } catch (err) {
+    status.className = 'form-status ko';
+    status.textContent = "Impossible de contacter le serveur. Appelez le +225 07 08 10 40 40.";
+  } finally {
+    btn.disabled = false;
+  }
+});
+</script>
 </body>
 </html>
