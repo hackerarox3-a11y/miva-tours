@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miva Tours — Abidjan, Côte d'Ivoire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#c5a065;--ink:#0f0f11;--cream:#f6f3ee;--grey:#8a857c;--line:#e5e0d8}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.65}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;letter-spacing:-0.01em}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem;background:linear-gradient(160deg,#1a1814 0%,#2a2520 70%,#3d332a 100%);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80') center/cover;opacity:0.18;mix-blend-mode:overlay}
+.hero-content{position:relative;z-index:1;max-width:900px}
+.hero h1 img{max-height:150px;display:block;margin:0 auto 1.2rem}
+.hero .tag{font-family:'Cormorant Garamond';font-style:italic;color:var(--gold);font-size:1.35rem;margin-bottom:2rem;display:block}
+.hero .cta{display:inline-block;padding:1rem 3rem;border:1px solid rgba(255,255,255,0.25);color:#fff;text-decoration:none;letter-spacing:0.15em;text-transform:uppercase;font-size:.8rem;transition:all .3s} .hero .cta:hover{background:#fff;color:var(--ink);border-color:#fff}
+section{padding:6rem 2rem;max-width:1100px;margin:0 auto}
+.destinations h2{font-size:2.6rem;margin-bottom:.3rem;color:var(--ink)}
+destinations .meta{font-family:'Cormorant Garamond';font-style:italic;color:var(--grey);font-size:1.15rem;margin-bottom:3rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+.card{border-top:1px solid var(--line);padding-top:1.5rem;transition:transform .2s}
+.card:hover{transform:translateY(-4px)}
+.card img{width:100%;height:250px;object-fit:cover;filter:grayscale(15%) contrast(1.05);margin-bottom:1rem;border-radius:2px}
+.card h3{font-family:'Cormorant Garamond';font-size:1.6rem;margin-bottom:.4rem}
+.card p{color:var(--grey);font-size:.92rem}
+.about{background:var(--ink);color:#fff;padding:5rem 2rem}
+.about-inner{max-width:900px;margin:0 auto}
+.about h2{font-size:2.2rem;margin-bottom:1rem;color:#fff}
+.about p{color:#ccc;font-size:1.05rem;line-height:1.8}
+.services{background:var(--cream)}
+.services-inner{max-width:1100px;margin:0 auto}
+.services h2{font-size:2.2rem;margin-bottom:2rem}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem}
+.service-block{border-left:3px solid var(--gold);padding-left:1.2rem}
+.service-block h4{font-family:'Cormorant Garamond';font-size:1.2rem;margin-bottom:.5rem;color:var(--ink)}
+.service-block p{color:var(--grey);font-size:.92rem}
+.contact-form{max-width:600px;margin:3rem auto 0;background:#fff;padding:2rem;border:1px solid var(--line);border-radius:4px}
+.contact-form input, .contact-form textarea{width:100%;padding:.8rem;border:1px solid var(--line);font-family:inherit;margin-bottom:1rem;background:var(--cream);font-size:.95rem}
+.contact-form button{background:var(--ink);color:#fff;padding:.8rem 2rem;border:none;font-family:inherit;text-transform:uppercase;letter-spacing:.1em;font-size:.8rem;cursor:pointer;transition:background .2s} .contact-form button:hover{background:var(--gold)}
+.contact-section{text-align:center;background:var(--cream);border-top:1px solid var(--line)}
+.contact-section h2{font-size:2.4rem;margin-bottom:1rem}
+.contact-section p{color:var(--grey);margin-bottom:.5rem}
+.contact-section a{color:var(--ink);font-weight:500;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px} .contact-section a:hover{color:var(--gold)}
+footer{text-align:center;padding:2.5rem 2rem;font-size:.75rem;color:#aaa;background:#0a0a0a}
+</style>
+</head>
+<body>
+<header class="hero">
+<div class="hero-content">
+<h1><img src="logo.jpg" alt="Miva Tours"></h1>
+<span class="tag">Inspiré de Discovery Services — Abidjan, Cocody · 24h/24, 7j/7</span>
+<a href="#contact" class="cta">Demander un voyage</a>
+</div>
+</header>
+
+<section class="destinations" id="destinations">
+<h2>Destinations</h2>
+<span class="meta">Casablanca · Paris · Bali · Johannesburg · Zanzibar · Seychelles · Dubaï</span>
+<div class="grid">
+<article class="card">
+<img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=800&q=80" alt="Montagne">
+<h3>Voyages de rêve</h3>
+<p>Circuits sur mesure dans les 5 continents.</p>
+</article>
+<article class="card">
+<img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80" alt="Temple">
+<h3>Tourisme religieux</h3>
+<p>Pèlerinages et circuits de foi : Rome, Israël, Turquie, Mecque, Jordanie.</p>
+</article>
+<article class="card">
+<img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80" alt="Mer">
+<h3>Tourisme médical</h3>
+<p>Partenariat Conseil Turc : suivi visa, hôtel, billets, soins et transfert aérien.</p>
+</article>
+</div>
+</section>
+
+<section class="about" id="about">
+<div class="about-inner">
+<h2>À propos</h2>
+<p>Miva Tours (inspiré de Discovery Services — Abidjan, Cocody) : billetterie compétitive, 600 000+ chambres partenaires dans le monde, location de voitures, MICE, assurances voyage, assistance aéroportuaire (Meet & Assist VIP), livraison bagages et transfert d'argent sécurisé. Votre rêve devient possible.</p>
+</div>
+</section>
+
+<section class="services" id="services">
+<div class="services-inner">
+<h2>Nos Services</h2>
+<div class="services-grid">
+<div class="service-block"><h4>Billeterie</h4><p>Toutes destinations, tarifs très compétitifs.</p></div>
+<div class="service-block"><h4>Hôtellerie</h4><p>600 000+ chambres dans le monde.</p></div>
+<div class="service-block"><h4>Tourisme</h4><p>Loisir, religieux et médical (Dubaï, circuits sur mesure).</p></div>
+<div class="service-block"><h4>MICE</h4><p>Réunions, incentives, conférences, expositions.</p></div>
+<div class="service-block"><h4>Location voitures</h4><p>Berling, 4×4, bus partout dans le monde et à Abidjan.</p></div>
+<div class="service-block"><h4>Assurances</h4><p>Garanties voyage complètes.</p></div>
+<div class="service-block"><h4>Assistance aéroport</h4><p>Meet & Assist VIP, livraison bagages.</p></div>
+<div class="service-block"><h4>Transfert d'argent</h4><p>Exchange sécurisé.</p></div>
+</div>
+</div>
+</section>
+
+<section class="contact-section" id="contact">
+<h2>Contact</h2>
+<p>Abidjan, Cocody — Ouvert 24h/24, 7j/7</p>
+<p><a href="mailto:contact@mivatours.ci">contact@mivatours.ci</a> · <a href="tel:+2250708104040">+225 07 08 10 40 40</a></p>
+<form class="contact-form" onsubmit="event.preventDefault(); this.innerHTML='<p>Message envoyé. Un conseiller vous répond sous 24h.</p>';">
+<input type="text" placeholder="Nom" required>
+<input type="email" placeholder="Email" required>
+<textarea rows="3" placeholder="Votre demande de voyage" required></textarea>
+<button type="submit">Envoyer</button>
+</form>
+</section>
+
+<footer>Miva Tours — Abidjan, Côte d'Ivoire · Inspiré de Discovery Services © 2026</footer>
+</body>
+</html>
