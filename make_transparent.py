@@ -51,6 +51,11 @@ for y in range(h):
 alpha_clean = out.getchannel("A").filter(ImageFilter.MedianFilter(3))
 out.putalpha(alpha_clean)
 
+# Recadrage : on retire le slogan du bas (affiche en texte sur le site)
+CROP_BOTTOM = 336
+out = out.crop((0, 0, w, CROP_BOTTOM))
+w, h = out.size
+
 # Suppression des ilots isoles (restes de bruit) : composantes < 12 px
 apx = out.load()
 seen = [[False] * w for _ in range(h)]

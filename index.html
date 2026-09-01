@@ -18,7 +18,8 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;lette
 /* ---- Animations ---- */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes floatPlane{0%{transform:translate(-10vw,10vh) rotate(8deg);opacity:0}10%{opacity:.55}90%{opacity:.55}100%{transform:translate(110vw,-6vh) rotate(8deg);opacity:0}}
+@keyframes planeCross{0%{transform:translate3d(-18vw,9vh,-420px);opacity:0}8%{opacity:.95}85%{opacity:.95}100%{transform:translate3d(112vw,-6vh,220px);opacity:0}}
+@keyframes planeBob{0%,100%{transform:translateY(0) rotateZ(5deg) rotateY(-16deg)}50%{transform:translateY(-18px) rotateZ(-4deg) rotateY(16deg)}}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,130,42,.45)}50%{box-shadow:0 0 0 14px rgba(245,130,42,0)}}
 @keyframes shine{0%{transform:translateX(-120%)}60%,100%{transform:translateX(220%)}}
 .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.3,1)}
@@ -28,7 +29,7 @@ h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;lette
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;color:#fff;transition:background .35s,box-shadow .35s,padding .35s}
 nav.scrolled{background:rgba(29,63,82,.97);box-shadow:0 2px 20px rgba(0,0,0,.25);padding:.7rem 2.5rem}
 nav .brand{display:flex;align-items:center;gap:.6rem;font-family:'Cormorant Garamond',serif;font-size:1.3rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:inherit}
-nav .brand img{height:44px;width:auto;vertical-align:middle}
+nav .brand img{height:54px;width:auto;vertical-align:middle}
 nav ul{display:flex;gap:1.8rem;list-style:none;align-items:center}
 nav a.nav-link{color:inherit;text-decoration:none;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;opacity:.88;position:relative;transition:color .25s}
 nav a.nav-link::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:2px;background:var(--orange);transition:width .3s}
@@ -39,9 +40,16 @@ nav .nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(245,130
 /* ---- Hero ---- */
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:7rem 2rem 5rem;background:linear-gradient(165deg,#1d3f52 0%,#2e7fa3 55%,#3d97b8 100%);color:#fff;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80') center/cover;opacity:.16;mix-blend-mode:overlay}
-.hero .plane{position:absolute;top:22%;left:0;font-size:2rem;opacity:0;animation:floatPlane 14s linear 2s infinite;z-index:1}
+.plane-scene{position:absolute;top:14%;left:0;z-index:1;perspective:900px;opacity:0;animation:planeCross 15s linear 1.2s infinite}
+.plane3d{width:130px;height:130px;transform-style:preserve-3d;animation:planeBob 4s ease-in-out infinite}
+.wing{position:absolute;inset:0}
+.wing.top{clip-path:polygon(100% 50%,0 6%,0 50%);background:linear-gradient(135deg,#f6fbfd 10%,#c3e2ef 55%,#8fc2d8);transform:rotateX(34deg)}
+.wing.bot{clip-path:polygon(100% 50%,0 50%,0 94%);background:linear-gradient(135deg,#6ba7c2 15%,#3f7e9d 70%,#2e6a88);transform:rotateX(-34deg)}
+.fin{position:absolute;inset:0;clip-path:polygon(2% 50%,28% 50%,2% 20%);background:linear-gradient(120deg,var(--orange),#e06f1c);transform:rotateY(78deg) translateZ(8px)}
 .hero-content{position:relative;z-index:2;max-width:900px}
-.hero img.logo{max-height:190px;filter:drop-shadow(0 8px 24px rgba(0,0,0,.35));animation:fadeUp 1s ease .1s both}
+.hero .logo-wrap{position:relative;display:inline-block;animation:fadeUp 1s ease .1s both}
+.hero .logo-wrap::before{content:'';position:absolute;inset:-6% -14%;background:radial-gradient(closest-side,rgba(255,255,255,.34),rgba(255,255,255,.1) 55%,rgba(255,255,255,0) 75%);border-radius:50%;z-index:0}
+.hero img.logo{position:relative;z-index:1;max-height:290px;filter:drop-shadow(0 12px 32px rgba(9,42,58,.55));display:block;margin:0 auto}
 .hero .tag{font-family:'Cormorant Garamond',serif;font-style:italic;color:#fff;font-size:1.4rem;margin:1.4rem 0 2.2rem;animation:fadeUp 1s ease .45s both}
 .hero .tag em{color:var(--orange-soft);font-style:italic}
 .cta{display:inline-block;padding:1rem 3rem;border:1px solid rgba(255,255,255,.4);color:#fff;text-decoration:none;letter-spacing:.15em;text-transform:uppercase;font-size:.8rem;position:relative;overflow:hidden;transition:all .3s;animation:fadeUp 1s ease .7s both}
@@ -117,7 +125,8 @@ footer em{color:var(--orange-soft)}
 nav{padding:.8rem 1.1rem}
 nav ul{gap:.9rem}
 nav a.nav-link{font-size:.62rem}
-nav .brand img{height:36px}
+nav .brand img{height:42px}
+.plane3d{width:90px;height:90px}
 nav .nav-cta{display:none}
 section{padding:4rem 1.2rem}
 .cta.gold{margin-left:0;margin-top:1rem}
@@ -139,9 +148,9 @@ section{padding:4rem 1.2rem}
 </nav>
 
 <header class="hero">
-<div class="plane">✈️</div>
+<div class="plane-scene" aria-hidden="true"><div class="plane3d"><div class="wing top"></div><div class="wing bot"></div><div class="fin"></div></div></div>
 <div class="hero-content">
-<img class="logo" src="logo.png" alt="Miva Tours — Venez, le monde vous attend">
+<div class="logo-wrap"><img class="logo" src="logo.png" alt="Miva Tours"></div>
 <p class="tag">Venez, <em>le monde vous attend</em> — Abidjan, Cocody · 24h/24, 7j/7</p>
 <div>
 <a href="#reserver" class="cta">Réserver mon voyage</a>
